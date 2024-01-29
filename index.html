@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Title of the webpage shown in the browser tab -->
+    <title>Day Count</title>
+
+    <!-- Internal CSS for styling the page -->
+    <style>
+        /* CSS class for the container to center its content */
+        .container {
+            display:flex;
+            flex-direction: row;
+            text-align: center;
+        }
+        /* CSS class for styling the photos */
+        .photo {
+            width: 50%; /* Sets the width of the photos to 50% of their container */
+            height: auto; /* Sets height automatically to keep the aspect ratio */
+            display: block; /* Makes the images block elements */
+            margin-left: auto; /* Centers the images horizontally */
+            margin-right: auto; /* Centers the images horizontally */
+        }
+        .column{
+            flex: 1;
+            width: 50%;
+            box-sizing: border-box;
+            padding: 10px; /* Adjust padding as needed */
+            border: 1px solid #ccc; /* Optional: Add a border for better visibility */
+        }
+        .ct{
+            text-align: center;
+        }
+        .h1{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="h1">
+                <!-- Main title of the page -->
+                <h1>Days of S and G's life</h1>
+    </div>
+    <!-- Main container for the content of the page -->
+    <div class="container">
+        <div class="column">
+            <!-- First image with a class 'photo' for styling -->
+            <img src="assets/g.jpeg" alt="First Photo" class="photo">
+            </div>
+        <div class="column">
+            <!-- Second image with a class 'photo' for styling -->
+            <img src="assets/s.jpg" alt="Second Photo" class="photo">
+        </div>
+    </div>
+
+    <div class="ct">
+                <!-- Container for the countdown display -->
+                <div id="countdown">
+                    <!-- Paragraphs to display the countdown (days, hours, minutes, seconds) -->
+                    <p id="days"></p> 
+                    <p id="hours"></p>
+                    <p id="minutes"></p>
+                    <p id="seconds"></p>
+                </div>
+    </div>
+
+    <!-- JavaScript for the countdown functionality -->
+    <script>
+        // Function to update the countdown every second
+        function updateCountdown() {
+            const targetDate = new Date("2024-01-27"); // Target date. Replace with actual date.
+            const now = new Date(); // Current date and time
+            const difference = now - targetDate; // Difference in milliseconds between now and the target date
+
+            // Calculating days, hours, minutes, and seconds from the difference
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            // Updating the HTML elements with the calculated time
+            document.getElementById("days").innerText = days + " Days";
+            document.getElementById("hours").innerText = hours + " Hours";
+            document.getElementById("minutes").innerText = minutes + " Minutes";
+            document.getElementById("seconds").innerText = seconds + " Seconds";
+        }
+
+        // Calling updateCountdown every 1000 milliseconds (1 second)
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>

@@ -9,7 +9,7 @@
         body {
             font-family: 'Dancing Script', cursive;
             background: 
-                linear-gradient(rgba(200, 200, 200, 0.5), rgba(200, 200, 200, 0.5)), 
+                linear-gradient(to right, rgba(255, 0, 0, 0.7), rgba(255, 105, 180, 0.7)), 
                 url('assets/heart-pattern.png') no-repeat center center fixed;
             background-size: cover;
             color: #333;
@@ -52,13 +52,27 @@
         }
 
         .header-main, .header-sub {
-            background: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background for better readability */
+            display: inline-block; /* Ensures the background only covers text */
             padding: 20px;
-            border-radius: 10px; /* Rounded corners for background */
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.7); /* Solid dark background */
+            position: relative; /* To ensure the gradient overlay is on top */
+        }
+
+        .header-main::before, .header-sub::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.5));
+            z-index: -1; /* Place the gradient behind the text */
+            border-radius: 10px;
         }
 
         .header-main h1, .header-sub h2 {
-            color: #ffffff; /* Text color to ensure readability */
+            color: #ffffff; /* Text color for contrast */
             font-family: 'Playfair Display', serif;
             margin-bottom: 20px;
             text-shadow: 
@@ -69,6 +83,8 @@
                 0 0 25px #e63946, 
                 0 0 30px #e63946;
             animation: neonBlink 1.5s infinite alternate;
+            position: relative;
+            z-index: 1;
         }
 
         .header-main h1 {
@@ -125,13 +141,13 @@
         }
 
         .heart-overlay {
-            position: absolute; /* Changed from fixed to absolute */
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 0; /* Ensure hearts are below all other content */
+            z-index: 2; /* Ensure hearts are above all other content */
             overflow: hidden;
             background: rgba(255, 255, 255, 0.1); /* Light overlay to enhance glass effect */
         }
@@ -226,7 +242,7 @@
         }
 
         // Create a large number of hearts
-        for (let i = 0; i < 30; i++) {
+        for (let i = 0; i < 50; i++) { // Adjust the number as needed
             createHeart();
         }
     </script>

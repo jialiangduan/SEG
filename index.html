@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Days of Love</title>
-    <link rel="icon" href="assets/favicon.png" type="image/x-icon"> <!-- Link to favicon -->
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon"> <!-- Link to favicon -->
     <style>
         body {
             font-family: 'Dancing Script', cursive;
@@ -51,34 +51,34 @@
             transform: scale(1.05);
         }
 
-        .header-main h1 {
-            font-size: 4em;
-            color: #e63946;
+        .header-main, .header-sub {
+            background: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background for better readability */
+            padding: 20px;
+            border-radius: 10px; /* Rounded corners for background */
+        }
+
+        .header-main h1, .header-sub h2 {
+            color: #ffffff; /* Text color to ensure readability */
             font-family: 'Playfair Display', serif;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             text-shadow: 
                 0 0 5px #e63946, 
                 0 0 10px #e63946, 
                 0 0 15px #e63946, 
                 0 0 20px #e63946, 
                 0 0 25px #e63946, 
-                0 0 30px #e63946, 
-                0 0 35px #e63946;
+                0 0 30px #e63946;
             animation: neonBlink 1.5s infinite alternate;
+        }
+
+        .header-main h1 {
+            font-size: 4em;
+            margin-bottom: 40px;
         }
 
         .header-sub h2 {
             font-size: 2.5em;
-            color: #e63946;
-            font-family: 'Playfair Display', serif;
             margin-bottom: 30px;
-            text-shadow: 
-                0 0 5px #e63946, 
-                0 0 10px #e63946, 
-                0 0 15px #e63946, 
-                0 0 20px #e63946, 
-                0 0 25px #e63946;
-            animation: neonBlink 1.5s infinite alternate;
         }
 
         @keyframes neonBlink {
@@ -88,7 +88,7 @@
                     0 0 10px #e63946, 
                     0 0 15px #e63946, 
                     0 0 20px #e63946;
-                color: #e63946;
+                color: #ffffff;
             }
             to {
                 text-shadow: 
@@ -226,4 +226,9 @@
         }
 
         // Create a large number of hearts
-        for (let i = 0; i < 
+        for (let i = 0; i < 30; i++) {
+            createHeart();
+        }
+    </script>
+</body>
+</html>
